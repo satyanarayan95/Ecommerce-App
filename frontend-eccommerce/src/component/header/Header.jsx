@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import SearchBar from "./SearchBar";
 import HeaderButtons from "./HeaderButtons";
+import { Link } from "react-router-dom";
 
 //to add css to material ui components
 const useStyle = makeStyles((theme) => ({
@@ -55,7 +56,7 @@ export default function Header() {
   return (
     <AppBar className={classes.header}>
       <ToolBar>
-        <Box className={classes.component}>
+        <Link to="/" className={classes.component}>
           <img src={logoURL} className={classes.logo} alt="logoURL" />
           <Box component="span" className={classes.container}>
             <Typography className={classes.subHeading}>
@@ -66,7 +67,7 @@ export default function Header() {
             </Typography>
             <img src={subURL} className={classes.subURL} alt="subURL" />
           </Box>
-        </Box>
+        </Link>
         <SearchBar />
         <HeaderButtons />
       </ToolBar>

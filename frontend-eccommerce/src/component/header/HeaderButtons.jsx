@@ -1,12 +1,14 @@
 import { makeStyles, Box, Typography, Badge, Button } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 const useStyle = makeStyles({
   container: {
     display: "flex",
+
   },
   wrapper: {
-    marginLeft: "0 5% 0 auto",
+    margin: "0 5% 0 auto",
     display: "flex",
     "& > *": {
       marginRight: 50,
@@ -31,16 +33,16 @@ const HeaderButtons = () => {
 
   return (
     <Box className={classes.wrapper}>
-      <Button className={classes.login} variant="contained">
-        Login
-      </Button>
-      <Typography style={{ marginTop: 2 }}>More</Typography>
-      <Box className={classes.container}>
+      <Link><Button className={classes.login} variant="contained">
+      Login
+    </Button></Link>
+      <Link><Typography style={{ marginTop: 2 }}>More</Typography></Link>
+      <Link to="/cart" className={classes.container}>
         <Badge badgeContent={2} color="secondary">
           <ShoppingCart />
         </Badge>
         <Typography style={{ marginLeft: 10 }}>Cart</Typography>
-      </Box>
+      </Link>
     </Box>
   );
 };
