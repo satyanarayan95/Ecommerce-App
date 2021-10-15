@@ -1,11 +1,12 @@
 import { makeStyles, Box, Typography, Badge, Button } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import LoginDialog from "../Login/LoginDialog";
 
 const useStyle = makeStyles({
   container: {
     display: "flex",
-
   },
   wrapper: {
     margin: "0 5% 0 auto",
@@ -31,18 +32,25 @@ const useStyle = makeStyles({
 const HeaderButtons = () => {
   const classes = useStyle();
 
+  //to open/close login dialogbox
+  const [open, setOpen] = useState(false);
+  const openDialog = () => {
+    setOpen(true);
+  };
+
   return (
     <Box className={classes.wrapper}>
-      <Link><Button className={classes.login} variant="contained">
-      Login
-    </Button></Link>
-      <Link><Typography style={{ marginTop: 2 }}>More</Typography></Link>
+        <Button className={classes.login} variant="contained" onClick={() => openDialog() }>
+          Login
+        </Button>
+        <Typography style={{ marginTop: 2 }}>More</Typography>
       <Link to="/cart" className={classes.container}>
         <Badge badgeContent={2} color="secondary">
           <ShoppingCart />
         </Badge>
         <Typography style={{ marginLeft: 10 }}>Cart</Typography>
       </Link>
+      <LoginDialog open={open} setOpen={setOpen}/>
     </Box>
   );
 };
